@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
+  <!-- Blue rounded background -->
+  <rect width="72" height="72" rx="16" fill="#5D8FB8"/>
+
+  <!-- Fork — 3 tines -->
+  <rect x="8" y="11" width="3.2" height="15" rx="1.6" fill="white"/>
+  <rect x="13.5" y="11" width="3.2" height="15" rx="1.6" fill="white"/>
+  <rect x="19" y="11" width="3.2" height="15" rx="1.6" fill="white"/>
+
+  <!-- Fork left handle curve -->
+  <path d="M8 26 C8 31 11 33 12.5 34 L12.5 61" stroke="white" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+  <!-- Fork right curve -->
+  <path d="M22.2 26 C22.2 31 19.5 33 18 34" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+  <!-- Fork neck connector -->
+  <rect x="13.5" y="26" width="8" height="3.5" rx="1.75" fill="white"/>
+
+  <!-- Plate outer ring -->
+  <circle cx="38" cy="40" r="15" fill="none" stroke="white" stroke-width="3"/>
+
+  <!-- Plate inner fill -->
+  <circle cx="38" cy="40" r="9.5" fill="white"/>
+
+  <!-- Checkmark on plate -->
+  <path d="M31.5 40 L36.5 46 L45 32" stroke="#5D8FB8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Knife handle — moved inward -->
+  <rect x="53" y="11" width="3.2" height="38" rx="1.6" fill="white"/>
+
+  <!-- Knife blade — max x=60, well away from edge -->
+  <path d="M54.6 11 C57.5 11 60 14 60 18 L60 23 L53 23Z" fill="white"/>
+</svg>
