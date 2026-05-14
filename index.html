@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AllergyGuard — Dine with confidence. Coming soon to iPhone and Android.">
+  <title>AllergyGuard — Dine With Confidence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #EFF6FF;
+      --white: #ffffff;
+      --navy: #01161B;
+      --blue: #5D8FB8;
+      --text: #0F172A;
+      --text2: #475569;
+      --text3: #94a3b8;
+      --radius: 16px;
+      --shadow: 0 4px 24px rgba(1,22,27,0.08);
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid rgba(93,143,184,0.15);
+      padding: 0 32px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-text { font-size: 18px; font-weight: 700; color: var(--navy); }
+    .nav-logo-text span { color: var(--blue); }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a {
+      font-size: 14px; color: var(--text2); text-decoration: none;
+      font-weight: 500; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+
+    /* HERO */
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 25% 50%, rgba(93,143,184,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 30%, rgba(219,234,254,0.7) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 560px;
+      position: relative; z-index: 1;
+    }
+
+    /* Logo */
+    .hero-logo {
+      display: flex; align-items: center; justify-content: center;
+      gap: 14px; margin-bottom: 32px;
+    }
+    .hero-logo-text {
+      font-size: 36px; font-weight: 700; color: var(--navy); letter-spacing: -0.5px;
+    }
+    .hero-logo-text span { color: var(--blue); }
+
+    /* Coming soon pill */
+    .coming-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(93,143,184,0.1);
+      border: 1px solid rgba(93,143,184,0.25);
+      color: var(--blue); font-size: 12px; font-weight: 600;
+      padding: 5px 14px; border-radius: 50px; margin-bottom: 24px;
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .coming-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--blue);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    /* Headline */
+    .hero-title {
+      font-size: clamp(30px, 6vw, 48px);
+      font-weight: 700; color: var(--navy);
+      line-height: 1.12; margin-bottom: 18px;
+      letter-spacing: -0.8px;
+    }
+    .hero-title em { color: var(--blue); font-style: normal; }
+
+    /* Subline */
+    .hero-sub {
+      font-size: 17px; color: var(--text2);
+      line-height: 1.7; margin-bottom: 40px;
+      max-width: 420px; margin-left: auto; margin-right: auto;
+    }
+
+    /* Store badges placeholder */
+    .store-row {
+      display: flex; justify-content: center; gap: 12px;
+      margin-bottom: 48px; flex-wrap: wrap;
+    }
+    .store-badge {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--navy); color: white;
+      padding: 11px 20px; border-radius: 12px;
+      font-size: 13px; font-weight: 500;
+      opacity: 0.4;
+      cursor: default;
+    }
+    .store-badge-icon { font-size: 18px; }
+    .store-badge-text { line-height: 1.2; }
+    .store-badge-text small { font-size: 10px; opacity: 0.7; display: block; }
+
+    /* Notify form */
+    .notify-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(93,143,184,0.15);
+      margin-bottom: 40px;
+    }
+    .notify-title {
+      font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 6px;
+    }
+    .notify-sub {
+      font-size: 14px; color: var(--text2); margin-bottom: 18px;
+    }
+    .notify-form {
+      display: flex; gap: 10px; flex-wrap: wrap;
+    }
+    .notify-input {
+      flex: 1; min-width: 200px;
+      padding: 11px 16px;
+      border: 1.5px solid rgba(93,143,184,0.25);
+      border-radius: 50px;
+      font-size: 14px; font-family: 'DM Sans', sans-serif;
+      color: var(--text); background: var(--bg);
+      outline: none; transition: border-color 0.2s;
+    }
+    .notify-input:focus { border-color: var(--blue); }
+    .notify-input::placeholder { color: var(--text3); }
+    .notify-btn {
+      background: var(--navy); color: white;
+      padding: 11px 24px; border-radius: 50px;
+      border: none; font-size: 14px; font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .notify-btn:hover { background: var(--blue); }
+    .notify-success {
+      display: none; font-size: 14px; color: #16A34A;
+      font-weight: 500; margin-top: 12px;
+    }
+
+    /* Legal links */
+    .legal-links {
+      display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+    }
+    .legal-links a {
+      font-size: 13px; color: var(--text3); text-decoration: none;
+      font-weight: 500; transition: color 0.2s;
+    }
+    .legal-links a:hover { color: var(--blue); }
+
+    /* Footer */
+    footer {
+      background: var(--navy); padding: 28px 32px; text-align: center;
+    }
+    .footer-logo { font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px; }
+    .footer-logo span { color: var(--blue); }
+    .footer-company { font-size: 12px; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
+    .footer-links {
+      display: flex; justify-content: center; gap: 20px;
+      flex-wrap: wrap; margin-bottom: 12px;
+    }
+    .footer-links a {
+      font-size: 13px; color: rgba(255,255,255,0.45);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: white; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 14px; }
+      .hero { padding: 56px 20px; }
+      .notify-card { padding: 22px 20px; }
+      .notify-form { flex-direction: column; }
+      .notify-btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg width="34" height="34" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+      <rect width="36" height="36" rx="9" fill="#5D8FB8"/>
+      <rect x="5" y="6" width="2.2" height="9" rx="1.1" fill="white"/>
+      <rect x="9" y="6" width="2.2" height="9" rx="1.1" fill="white"/>
+      <rect x="13" y="6" width="2.2" height="9" rx="1.1" fill="white"/>
+      <path d="M5 15 C5 18 7 19 8 19.5 L8 30" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path d="M15.2 15 C15.2 18 13.2 19 12.2 19.5" stroke="white" stroke-width="1.5" fill="none"/>
+      <rect x="9" y="15" width="5" height="2.5" rx="1.25" fill="white"/>
+      <circle cx="25" cy="21" r="9" fill="none" stroke="white" stroke-width="2"/>
+      <circle cx="25" cy="21" r="5.5" fill="white"/>
+      <path d="M21.5 21 L24 24 L29 17" stroke="#5D8FB8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <rect x="31" y="6" width="2.2" height="22" rx="1.1" fill="white"/>
+      <path d="M32.1 6 C34 6 36 8 36 11 L36 15 L31 15Z" fill="white"/>
+    </svg>
+    <span class="nav-logo-text">Allergy<span>Guard</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="support.html">Support</a>
+  </div>
+</nav>
+
+<main class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+
+    <div class="hero-logo">
+      <svg width="60" height="60" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <rect width="64" height="64" rx="16" fill="#5D8FB8"/>
+        <rect x="9" y="10" width="3.5" height="16" rx="1.75" fill="white"/>
+        <rect x="15.5" y="10" width="3.5" height="16" rx="1.75" fill="white"/>
+        <rect x="22" y="10" width="3.5" height="16" rx="1.75" fill="white"/>
+        <path d="M9 26 C9 31 12 33 13.5 34 L13.5 54" stroke="white" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <path d="M25.5 26 C25.5 31 22.5 33 21 34" stroke="white" stroke-width="2.5" fill="none"/>
+        <rect x="15.5" y="26" width="9" height="4" rx="2" fill="white"/>
+        <circle cx="45" cy="36" r="16" fill="none" stroke="white" stroke-width="3"/>
+        <circle cx="45" cy="36" r="10" fill="white"/>
+        <path d="M38 36 L43 42 L52 28" stroke="#5D8FB8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="57" y="10" width="3.5" height="40" rx="1.75" fill="white"/>
+        <path d="M58.75 10 C62 10 65 13.5 65 18 L65 24 L57 24Z" fill="white"/>
+      </svg>
+      <div class="hero-logo-text">Allergy<span>Guard</span></div>
+    </div>
+
+    <div class="coming-pill">
+      <div class="coming-dot"></div>
+      Coming Soon
+    </div>
+
+    <h1 class="hero-title">
+      Dining out with food allergies<br>
+      just got <em>easier.</em>
+    </h1>
+
+    <p class="hero-sub">
+      AllergyGuard gives families with food allergies the confidence
+      to enjoy every meal out — safely and without the stress.
+    </p>
+
+    <div class="store-row">
+      <div class="store-badge">
+        <span class="store-badge-icon">🍎</span>
+        <div class="store-badge-text">
+          <small>Coming to</small>
+          App Store
+        </div>
+      </div>
+      <div class="store-badge">
+        <span class="store-badge-icon">▶</span>
+        <div class="store-badge-text">
+          <small>Coming to</small>
+          Google Play
+        </div>
+      </div>
+    </div>
+
+    <div class="notify-card">
+      <p class="notify-title">Be the first to know when we launch</p>
+      <p class="notify-sub">Enter your email and we'll notify you the moment AllergyGuard is available.</p>
+      <div class="notify-form">
+        <input type="email" class="notify-input" id="email-input" placeholder="your@email.com">
+        <button class="notify-btn" onclick="handleNotify()">Notify Me</button>
+      </div>
+      <p class="notify-success" id="notify-success">✅ You're on the list! We'll be in touch at launch.</p>
+    </div>
+
+    <div class="legal-links">
+      <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="support.html">Support</a>
+      <a href="mailto:support@allergyguard.io">Contact</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-logo">Allergy<span>Guard</span></div>
+  <div class="footer-company">A product of Vanquish Inc. &nbsp;·&nbsp; Boca Raton, Florida</div>
+  <div class="footer-links">
+    <a href="terms.html">Terms of Service</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="support.html">Support</a>
+    <a href="mailto:support@allergyguard.io">support@allergyguard.io</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 Vanquish Inc. All rights reserved.</div>
+</footer>
+
+<script>
+function handleNotify() {
+  const email = document.getElementById('email-input').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('email-input').focus();
+    return;
+  }
+  document.querySelector('.notify-form').style.display = 'none';
+  document.getElementById('notify-success').style.display = 'block';
+}
+</script>
+
+</body>
+</html>

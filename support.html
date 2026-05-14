@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — AllergyGuard by Vanquish Inc.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #EFF6FF; --white: #ffffff; --navy: #01161B; --blue: #5D8FB8;
+      --text: #0F172A; --text2: #475569; --text3: #94a3b8;
+      --radius: 16px; --shadow: 0 4px 24px rgba(1,22,27,0.08);
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+    nav {
+      background: var(--white); border-bottom: 1px solid rgba(93,143,184,0.15);
+      padding: 0 32px; height: 64px; display: flex; align-items: center;
+      justify-content: space-between; box-shadow: var(--shadow);
+      position: sticky; top: 0; z-index: 10;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-text { font-size: 18px; font-weight: 700; color: var(--navy); }
+    .nav-logo-text span { color: var(--blue); }
+    .nav-back { font-size: 14px; color: var(--blue); text-decoration: none; font-weight: 500; }
+    .nav-back:hover { color: var(--navy); }
+    .container { max-width: 760px; margin: 0 auto; padding: 60px 24px 80px; }
+    .doc-header {
+      background: var(--white); border-radius: var(--radius); padding: 36px 40px;
+      box-shadow: var(--shadow); margin-bottom: 32px; border-top: 4px solid var(--blue);
+      text-align: center;
+    }
+    .doc-label { font-size: 12px; font-weight: 600; color: var(--blue); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+    .doc-title { font-size: 28px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .doc-sub { font-size: 15px; color: var(--text2); }
+    .support-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+    .support-card {
+      background: var(--white); border-radius: var(--radius); padding: 24px;
+      box-shadow: var(--shadow); border: 1px solid rgba(93,143,184,0.1);
+      text-align: center;
+    }
+    .support-icon { font-size: 32px; margin-bottom: 12px; }
+    .support-title { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+    .support-desc { font-size: 14px; color: var(--text2); line-height: 1.6; margin-bottom: 16px; }
+    .support-btn {
+      display: inline-block; background: var(--navy); color: white;
+      padding: 10px 20px; border-radius: 50px; font-size: 13px;
+      font-weight: 600; text-decoration: none; transition: all 0.2s;
+    }
+    .support-btn:hover { background: var(--blue); }
+    .faq-section { background: var(--white); border-radius: var(--radius); padding: 32px 40px; box-shadow: var(--shadow); }
+    .faq-title { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 24px; }
+    .faq-item { border-bottom: 1px solid var(--bg); padding: 18px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+    .faq-a { font-size: 14px; color: var(--text2); line-height: 1.7; }
+    a { color: var(--blue); }
+    footer { background: var(--navy); padding: 24px; text-align: center; margin-top: 40px; }
+    .footer-logo { font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px; }
+    .footer-logo span { color: var(--blue); }
+    .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; }
+    .footer-links a:hover { color: white; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+    @media (max-width: 600px) {
+      .support-grid { grid-template-columns: 1fr; }
+      .faq-section { padding: 24px 20px; }
+      nav { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+      <rect width="36" height="36" rx="9" fill="#5D8FB8"/>
+      <rect x="5" y="6" width="2.2" height="9" rx="1.1" fill="white"/>
+      <rect x="9" y="6" width="2.2" height="9" rx="1.1" fill="white"/>
+      <rect x="13" y="6" width="2.2" height="9" rx="1.1" fill="white"/>
+      <path d="M5 15 C5 18 7 19 8 19.5 L8 30" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path d="M15.2 15 C15.2 18 13.2 19 12.2 19.5" stroke="white" stroke-width="1.5" fill="none"/>
+      <rect x="9" y="15" width="5" height="2.5" rx="1.25" fill="white"/>
+      <circle cx="25" cy="21" r="9" fill="none" stroke="white" stroke-width="2"/>
+      <circle cx="25" cy="21" r="5.5" fill="white"/>
+      <path d="M21.5 21 L24 24 L29 17" stroke="#5D8FB8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <rect x="31" y="6" width="2.2" height="22" rx="1.1" fill="white"/>
+      <path d="M32.1 6 C34 6 36 8 36 11 L36 15 L31 15Z" fill="white"/>
+    </svg>
+    <span class="nav-logo-text">Allergy<span>Guard</span></span>
+  </a>
+  <a href="/" class="nav-back">← Back to Home</a>
+</nav>
+
+<div class="container">
+  <div class="doc-header">
+    <p class="doc-label">Help Center</p>
+    <h1 class="doc-title">Support</h1>
+    <p class="doc-sub">We're here to help. Reach out anytime.</p>
+  </div>
+
+  <div class="support-grid">
+    <div class="support-card">
+      <div class="support-icon">✉️</div>
+      <p class="support-title">Email Support</p>
+      <p class="support-desc">Send us a message and we'll get back to you within 24 hours.</p>
+      <a href="mailto:support@allergyguard.io" class="support-btn">Email Us</a>
+    </div>
+    <div class="support-card">
+      <div class="support-icon">🐛</div>
+      <p class="support-title">Report a Bug</p>
+      <p class="support-desc">Found something that isn't working? Let us know so we can fix it.</p>
+      <a href="mailto:support@allergyguard.io?subject=Bug Report" class="support-btn">Report Bug</a>
+    </div>
+  </div>
+
+  <div class="faq-section">
+    <p class="faq-title">Frequently Asked Questions</p>
+
+    <div class="faq-item">
+      <p class="faq-q">Is AllergyGuard a medical device?</p>
+      <p class="faq-a">No. AllergyGuard is a decision-support tool powered by AI. It is not a medical device and does not provide medical advice. Always confirm allergen information directly with restaurant staff before ordering.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">How accurate is the allergen analysis?</p>
+      <p class="faq-a">AllergyGuard uses AI to analyze ingredient information based on what is provided. Results may not reflect cross-contamination risks, recipe changes, or kitchen practices. Always verify with restaurant staff.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">What allergens does AllergyGuard detect?</p>
+      <p class="faq-a">AllergyGuard can analyze for any allergen you add to your profile, including the 9 major food allergens: peanuts, tree nuts, milk, eggs, fish, shellfish, wheat, soy, and sesame.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">How do I cancel my subscription?</p>
+      <p class="faq-a">Subscriptions are managed through the App Store or Google Play. To cancel, go to your device's subscription settings and cancel AllergyGuard Premium from there.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">How do I delete my account and data?</p>
+      <p class="faq-a">Go to Settings in the app and tap Delete Account. This will permanently delete your account and all associated data within 30 days.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Is my health data safe?</p>
+      <p class="faq-a">Yes. We treat allergy information with the highest level of care. We do not sell your health data to third parties. See our <a href="privacy.html">Privacy Policy</a> for full details.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">How many family profiles can I add?</p>
+      <p class="faq-a">Free plan users can add 1 profile. Premium subscribers can add up to 6 family profiles.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Does the barcode scanner work on all products?</p>
+      <p class="faq-a">The barcode scanner uses the Open Food Facts database which contains millions of products. If a product is not found, you can manually enter the ingredients for analysis.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Still have questions?</p>
+      <p class="faq-a">Contact us at <a href="mailto:support@allergyguard.io">support@allergyguard.io</a> and we'll be happy to help.</p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Allergy<span>Guard</span></div>
+  <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:12px;">A product of Vanquish Inc. &nbsp;·&nbsp; Boca Raton, Florida</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="support.html">Support</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 Vanquish Inc. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
