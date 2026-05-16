@@ -110,8 +110,49 @@
       nav { padding: 0 16px; }
     }
   </style>
+  <style>
+    #app-return-banner {
+      display: none;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: #5D8FB8;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    #app-return-banner a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    #app-return-banner a:hover { opacity: 0.9; }
+  </style>
 </head>
 <body>
+
+<div id="app-return-banner">
+  <a href="allergyguard://">
+    ← Return to AllergyGuard to accept the updated terms
+  </a>
+</div>
+
+<script>
+  // Only show the return banner when opened from the app
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('source') === 'app') {
+      document.getElementById('app-return-banner').style.display = 'block';
+    }
+  })();
+</script>
 
 <nav>
   <a href="/" class="nav-logo">
