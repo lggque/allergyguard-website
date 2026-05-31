@@ -141,48 +141,6 @@
     .store-badge-text { line-height: 1.2; }
     .store-badge-text small { font-size: 10px; opacity: 0.7; display: block; }
 
-    /* Notify form */
-    .notify-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 28px 32px;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(93,143,184,0.15);
-      margin-bottom: 40px;
-    }
-    .notify-title {
-      font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 6px;
-    }
-    .notify-sub {
-      font-size: 14px; color: var(--text2); margin-bottom: 18px;
-    }
-    .notify-form {
-      display: flex; gap: 10px; flex-wrap: wrap;
-    }
-    .notify-input {
-      flex: 1; min-width: 200px;
-      padding: 11px 16px;
-      border: 1.5px solid rgba(93,143,184,0.25);
-      border-radius: 50px;
-      font-size: 14px; font-family: 'DM Sans', sans-serif;
-      color: var(--text); background: var(--bg);
-      outline: none; transition: border-color 0.2s;
-    }
-    .notify-input:focus { border-color: var(--blue); }
-    .notify-input::placeholder { color: var(--text3); }
-    .notify-btn {
-      background: var(--navy); color: white;
-      padding: 11px 24px; border-radius: 50px;
-      border: none; font-size: 14px; font-weight: 600;
-      font-family: 'DM Sans', sans-serif;
-      cursor: pointer; transition: all 0.2s; white-space: nowrap;
-    }
-    .notify-btn:hover { background: var(--blue); }
-    .notify-success {
-      display: none; font-size: 14px; color: #16A34A;
-      font-weight: 500; margin-top: 12px;
-    }
-
     /* Legal links */
     .legal-links {
       display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
@@ -215,9 +173,6 @@
       nav { padding: 0 16px; }
       .nav-links { gap: 14px; }
       .hero { padding: 56px 20px; }
-      .notify-card { padding: 22px 20px; }
-      .notify-form { flex-direction: column; }
-      .notify-btn { width: 100%; }
     }
   </style>
 </head>
@@ -302,16 +257,6 @@
       </div>
     </div>
 
-    <div class="notify-card">
-      <p class="notify-title">Be the first to know when we launch</p>
-      <p class="notify-sub">Enter your email and we'll notify you the moment AllergyGuardAI is available.</p>
-      <div class="notify-form">
-        <input type="email" class="notify-input" id="email-input" placeholder="your@email.com">
-        <button class="notify-btn" onclick="handleNotify()">Notify Me</button>
-      </div>
-      <p class="notify-success" id="notify-success">✅ You're on the list! We'll be in touch at launch.</p>
-    </div>
-
     <div class="legal-links">
       <a href="terms.html">Terms of Service</a>
       <a href="privacy.html">Privacy Policy</a>
@@ -334,16 +279,52 @@
   <div class="footer-copy">&copy; 2026 Vanquish Inc. All rights reserved.</div>
 </footer>
 
-<script>
-function handleNotify() {
-  const email = document.getElementById('email-input').value.trim();
-  if (!email || !email.includes('@')) {
-    document.getElementById('email-input').focus();
-    return;
-  }
-  document.querySelector('.notify-form').style.display = 'none';
-  document.getElementById('notify-success').style.display = 'block';
-}
+<script type="module">
+  import { initializeApp }                            from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
+  import { getFirestore, doc, setDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
+
+  const firebaseConfig = {
+    apiKey:            'FIREBASE_API_KEY',
+    authDomain:        'FIREBASE_AUTH_DOMAIN',
+    projectId:         'FIREBASE_PROJECT_ID',
+    storageBucket:     'FIREBASE_STORAGE_BUCKET',
+    messagingSenderId: 'FIREBASE_MESSAGING_SENDER_ID',
+    appId:             'FIREBASE_APP_ID',
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db  = getFirestore(app);
+
+  window.handleNotify = async function () {
+    const emailInput = document.getElementById('email-input');
+    const btn        = document.querySelector('.notify-btn');
+    const errorEl    = document.getElementById('notify-error');
+    const email      = emailInput.value.trim();
+
+    if (!email || !email.includes('@')) {
+      emailInput.focus();
+      return;
+    }
+
+    btn.disabled    = true;
+    btn.textContent = 'Saving…';
+    errorEl.style.display = 'none';
+
+    try {
+      await setDoc(doc(db, 'waitlist_signups', email.toLowerCase()), {
+        email:     email.toLowerCase(),
+        createdAt: serverTimestamp(),
+        source:    'allergyguardai.app',
+      });
+      document.querySelector('.notify-form').style.display = 'none';
+      document.getElementById('notify-success').style.display = 'block';
+    } catch (err) {
+      console.error('[handleNotify] Firestore write failed:', err);
+      btn.disabled    = false;
+      btn.textContent = 'Notify Me';
+      errorEl.style.display = 'block';
+    }
+  };
 </script>
 
 </body>
