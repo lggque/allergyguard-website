@@ -60,6 +60,7 @@
     /* ── Shared section layout ───────────────────────────── */
     .section { padding: 80px 24px; }
     .section-inner { margin: 0 auto; }
+    .section--demo { padding-top: 30px; }
     .section-inner--narrow { max-width: 680px; }
     .section-inner--wide   { max-width: 920px; }
     .section-label {
@@ -75,7 +76,7 @@
 
     /* ── Hero ────────────────────────────────────────────── */
     .hero {
-      padding: 96px 24px 88px;
+      padding: 96px 24px 40px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -285,7 +286,7 @@
     @media (max-width: 640px) {
       nav { padding: 0 16px; }
       .nav-links { gap: 14px; }
-      .hero { padding: 64px 20px 60px; }
+      .hero { padding: 64px 20px 32px; }
       .section { padding: 60px 20px; }
       .mission { padding: 60px 20px; }
       .cta { padding: 64px 20px; }
@@ -360,7 +361,7 @@
 </section>
 
 <!-- 2. HOW IT WORKS -->
-<section class="section" aria-labelledby="demo-heading">
+<section class="section section--demo" aria-labelledby="demo-heading">
   <div class="section-inner section-inner--narrow">
     <p class="section-label">How it works</p>
     <h2 class="section-title" id="demo-heading">See it in action</h2>
