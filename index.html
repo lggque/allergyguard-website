@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="AllergyGuardAI — Dine with confidence. Coming soon to iPhone and Android.">
-  <title>AllergyGuardAI — Dine With Confidence</title>
+  <meta name="description" content="AllergyGuardAI scans menus and food labels for allergens — instantly, accurately, and for every member of your family.">
+  <title>AllergyGuardAI — Eat with Confidence</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="AllergyGuardAI">
-  <meta property="og:title" content="AllergyGuardAI — Dine With Confidence">
-  <meta property="og:description" content="Safe dining for families with food allergies. Coming soon to iPhone and Android.">
+  <meta property="og:title" content="AllergyGuardAI — Eat with Confidence">
+  <meta property="og:description" content="AllergyGuardAI scans menus and food labels for allergens — instantly, accurately, and for every member of your family.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://allergyguardai.app">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,10 +32,10 @@
       font-family: 'DM Sans', sans-serif;
       background: var(--bg);
       color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      line-height: 1.7;
     }
+
+    /* ── Nav ─────────────────────────────────────────────── */
     nav {
       background: var(--white);
       border-bottom: 1px solid rgba(93,143,184,0.15);
@@ -45,6 +45,7 @@
       align-items: center;
       justify-content: space-between;
       box-shadow: var(--shadow);
+      position: sticky; top: 0; z-index: 10;
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-logo-text { font-size: 18px; font-weight: 700; color: var(--navy); }
@@ -56,13 +57,25 @@
     }
     .nav-links a:hover { color: var(--blue); }
 
-    /* HERO */
+    /* ── Shared section layout ───────────────────────────── */
+    .section { padding: 80px 24px; }
+    .section-inner { margin: 0 auto; }
+    .section-inner--narrow { max-width: 680px; }
+    .section-inner--wide   { max-width: 920px; }
+    .section-label {
+      font-size: 12px; font-weight: 600; color: var(--blue);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(24px, 4vw, 34px);
+      font-weight: 700; color: var(--navy);
+      line-height: 1.2; letter-spacing: -0.4px;
+      margin-bottom: 24px;
+    }
+
+    /* ── Hero ────────────────────────────────────────────── */
     .hero {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 80px 24px;
+      padding: 96px 24px 88px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -75,89 +88,171 @@
       pointer-events: none;
     }
     .hero-inner {
-      max-width: 560px;
+      max-width: 600px;
+      margin: 0 auto;
       position: relative; z-index: 1;
     }
-
-    /* Logo */
     .hero-logo {
       display: flex; align-items: center; justify-content: center;
-      gap: 14px; margin-bottom: 32px;
+      gap: 14px; margin-bottom: 36px;
     }
     .hero-logo-text {
       font-size: 36px; font-weight: 700; color: var(--navy); letter-spacing: -0.5px;
     }
     .hero-logo-text span { color: var(--blue); }
-
-    /* Coming soon pill */
-    .coming-pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(93,143,184,0.1);
-      border: 1px solid rgba(93,143,184,0.25);
-      color: var(--blue); font-size: 12px; font-weight: 600;
-      padding: 5px 14px; border-radius: 50px; margin-bottom: 24px;
-      text-transform: uppercase; letter-spacing: 0.08em;
-    }
-    .coming-dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--blue);
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.8); }
-    }
-
-    /* Headline */
-    .hero-title {
-      font-size: clamp(30px, 6vw, 48px);
+    h1.hero-title {
+      font-size: clamp(38px, 7vw, 62px);
       font-weight: 700; color: var(--navy);
-      line-height: 1.12; margin-bottom: 18px;
-      letter-spacing: -0.8px;
+      line-height: 1.06; margin-bottom: 20px;
+      letter-spacing: -1.2px;
     }
-    .hero-title em { color: var(--blue); font-style: normal; }
-
-    /* Subline */
     .hero-sub {
-      font-size: 17px; color: var(--text2);
-      line-height: 1.7; margin-bottom: 40px;
-      max-width: 420px; margin-left: auto; margin-right: auto;
+      font-size: 18px; color: var(--text2);
+      line-height: 1.75; margin-bottom: 44px;
+      max-width: 480px; margin-left: auto; margin-right: auto;
     }
-
-    /* Store badges placeholder */
     .store-row {
-      display: flex; justify-content: center; gap: 12px;
-      margin-bottom: 48px; flex-wrap: wrap;
+      display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
     }
-    .store-badge {
-      display: flex; align-items: center; gap: 8px;
-      background: var(--navy); color: white;
-      padding: 11px 20px; border-radius: 12px;
-      font-size: 13px; font-weight: 500;
-      opacity: 0.4;
-      cursor: default;
-    }
-    .store-badge-icon { font-size: 18px; }
-    .store-badge-text { line-height: 1.2; }
-    .store-badge-text small { font-size: 10px; opacity: 0.7; display: block; }
 
-    /* Legal links */
-    .legal-links {
-      display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+    /* ── Founder Story ───────────────────────────────────── */
+    .founder-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 48px;
+      border-top: 4px solid var(--blue);
     }
-    .legal-links a {
-      font-size: 13px; color: var(--text3); text-decoration: none;
-      font-weight: 500; transition: color 0.2s;
+    .founder-card p {
+      font-size: 16px; color: var(--text2); line-height: 1.85; margin-bottom: 20px;
     }
-    .legal-links a:hover { color: var(--blue); }
+    .founder-card p:last-of-type { margin-bottom: 0; }
+    .founder-signoff {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--bg);
+      font-size: 15px; color: var(--text3);
+      font-style: italic;
+      text-align: right;
+    }
 
-    /* Footer */
+    /* ── Mission ─────────────────────────────────────────── */
+    .mission {
+      background: var(--navy);
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .mission .section-label { color: rgba(93,143,184,0.75); margin-bottom: 14px; }
+    .mission .section-title {
+      color: white;
+      font-size: clamp(20px, 3.5vw, 28px);
+      max-width: 520px;
+      margin: 0 auto;
+      letter-spacing: -0.2px;
+      line-height: 1.35;
+    }
+
+    /* ── Features ────────────────────────────────────────── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 36px;
+    }
+    .feature-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px 26px;
+      box-shadow: var(--shadow);
+      border-top: 3px solid var(--blue);
+    }
+    .feature-item p {
+      font-size: 15px; color: var(--text2); line-height: 1.7; margin: 0;
+    }
+    .feature-item strong { color: var(--navy); font-weight: 600; }
+
+    /* ── Pricing ─────────────────────────────────────────── */
+    .pricing-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 36px;
+    }
+    .pricing-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 36px 32px;
+    }
+    .pricing-card--premium { border-top: 4px solid var(--blue); }
+    .best-value-pill {
+      display: inline-block;
+      background: var(--blue); color: white;
+      font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 3px 10px; border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .pricing-tier {
+      font-size: 12px; font-weight: 600; color: var(--blue);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;
+    }
+    .pricing-price {
+      font-size: 34px; font-weight: 700; color: var(--navy);
+      letter-spacing: -0.5px; line-height: 1; margin-bottom: 6px;
+    }
+    .pricing-price-sub {
+      font-size: 13px; color: var(--text3); margin-bottom: 24px; line-height: 1.5;
+    }
+    .pricing-divider { height: 1px; background: var(--bg); margin-bottom: 20px; }
+    .pricing-features { list-style: none; padding: 0; margin: 0; }
+    .pricing-features li {
+      font-size: 14px; color: var(--text2);
+      padding: 5px 0;
+      display: flex; align-items: flex-start; gap: 9px;
+      line-height: 1.55;
+    }
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--blue);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── CTA ─────────────────────────────────────────────── */
+    .cta {
+      padding: 88px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 60%, rgba(93,143,184,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+    h2.cta-title {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 700; color: var(--navy);
+      line-height: 1.3; letter-spacing: -0.3px;
+      margin-bottom: 36px;
+    }
+
+    /* ── Footer ──────────────────────────────────────────── */
     footer {
-      background: var(--navy); padding: 28px 32px; text-align: center;
+      background: var(--navy);
+      padding: 32px 24px;
+      text-align: center;
     }
     .footer-logo { font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px; }
     .footer-logo span { color: var(--blue); }
-    .footer-company { font-size: 12px; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
+    .footer-company { font-size: 12px; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
     .footer-links {
       display: flex; justify-content: center; gap: 20px;
       flex-wrap: wrap; margin-bottom: 12px;
@@ -169,10 +264,17 @@
     .footer-links a:hover { color: white; }
     .footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); }
 
-    @media (max-width: 600px) {
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 640px) {
       nav { padding: 0 16px; }
       .nav-links { gap: 14px; }
-      .hero { padding: 56px 20px; }
+      .hero { padding: 64px 20px 60px; }
+      .section { padding: 60px 20px; }
+      .mission { padding: 60px 20px; }
+      .cta { padding: 64px 20px; }
+      .founder-card { padding: 28px 22px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .pricing-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -180,7 +282,7 @@
 
 <nav>
   <a href="/" class="nav-logo">
-    <svg width="34" height="34" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+    <svg width="34" height="34" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
       <rect width="36" height="36" rx="9" fill="#5D8FB8"/>
       <rect x="5" y="6" width="2.2" height="9" rx="1.1" fill="white"/>
       <rect x="9" y="6" width="2.2" height="9" rx="1.1" fill="white"/>
@@ -203,12 +305,13 @@
   </div>
 </nav>
 
-<main class="hero">
-  <div class="hero-bg"></div>
+<!-- 1. HERO -->
+<section class="hero" aria-label="Introduction">
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-inner">
 
-    <div class="hero-logo">
-      <svg width="60" height="60" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+    <div class="hero-logo" aria-hidden="true">
+      <svg width="60" height="60" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" focusable="false">
         <rect width="64" height="64" rx="16" fill="#5D8FB8"/>
         <rect x="9" y="10" width="3.5" height="16" rx="1.75" fill="white"/>
         <rect x="15.5" y="10" width="3.5" height="16" rx="1.75" fill="white"/>
@@ -225,107 +328,145 @@
       <div class="hero-logo-text">AllergyGuard<span>AI</span></div>
     </div>
 
-    <div class="coming-pill">
-      <div class="coming-dot"></div>
-      Coming Soon
-    </div>
-
-    <h1 class="hero-title">
-      Dining out with food allergies<br>
-      just got <em>easier.</em>
-    </h1>
+    <h1 class="hero-title">Eat with confidence.</h1>
 
     <p class="hero-sub">
-      AllergyGuardAI gives families with food allergies the confidence
-      to enjoy every meal out — safely and without the stress.
+      AllergyGuardAI scans menus and food labels for allergens — instantly,
+      accurately, and for every member of your family.
     </p>
 
     <div class="store-row">
-      <div class="store-badge">
-        <span class="store-badge-icon">🍎</span>
-        <div class="store-badge-text">
-          <small>Coming to</small>
-          App Store
-        </div>
-      </div>
-      <div class="store-badge">
-        <span class="store-badge-icon">▶</span>
-        <div class="store-badge-text">
-          <small>Coming to</small>
-          Google Play
-        </div>
-      </div>
-    </div>
-
-    <div class="legal-links">
-      <a href="terms.html">Terms of Service</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="support.html">Support</a>
-      <a href="mailto:support@allergyguardai.app">Contact</a>
+      <!-- App Store and Play Store badges to be added after store approval -->
     </div>
 
   </div>
-</main>
+</section>
 
+<!-- 2. FOUNDER STORY -->
+<section class="section" aria-labelledby="founder-heading">
+  <div class="section-inner section-inner--narrow">
+    <h2 class="section-title" id="founder-heading">Why we built this</h2>
+    <div class="founder-card">
+      <p>AllergyGuardAI started with a moment no parent forgets.</p>
+      <p>Our son had an anaphylactic reaction at a catered family event — despite the caterer being told, in advance and clearly, about his peanut and tree nut allergies. EpiPen administered. 911 called. He's healthy today.</p>
+      <p>But we sat in that ambulance while he was being examined, and realized something: every allergy parent we know has lived through some version of this. The trust placed in strangers handling our child's food. The careful conversations that still go wrong. The vigilance that never gets to rest.</p>
+      <p>We built AllergyGuardAI so families with food allergies can eat anywhere with confidence — not just hope.</p>
+      <p class="founder-signoff">— Knowlton and Veronica, Vanquish Inc.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. MISSION -->
+<section class="mission" aria-labelledby="mission-heading">
+  <p class="section-label">Our mission</p>
+  <h2 class="section-title" id="mission-heading">To help every family with food allergies eat with confidence.</h2>
+</section>
+
+<!-- 4. FEATURES -->
+<section class="section" aria-labelledby="features-heading">
+  <div class="section-inner section-inner--wide">
+    <p class="section-label">Features</p>
+    <h2 class="section-title" id="features-heading">What AllergyGuardAI does</h2>
+    <div class="features-grid">
+
+      <article class="feature-item">
+        <p><strong>Scan any restaurant menu.</strong> Point your camera at a menu or type a dish name. Every ingredient is checked against your family's specific allergies in seconds — safe, warn, or danger.</p>
+      </article>
+
+      <article class="feature-item">
+        <p><strong>Scan any food label.</strong> Over three million products in our barcode database. Grocery shopping with confidence, not guesswork.</p>
+      </article>
+
+      <article class="feature-item">
+        <p><strong>One app, your whole family.</strong> Individual profiles for each family member with their specific allergens. Switch between them instantly at any restaurant.</p>
+      </article>
+
+      <article class="feature-item">
+        <p><strong>Allergy cards in 12 languages.</strong> Travel anywhere. Show your card at any table.</p>
+      </article>
+
+      <article class="feature-item">
+        <p><strong>Waiter scripts, written for you.</strong> After every scan, get exactly what to say, what to ask, and what to watch for.</p>
+      </article>
+
+      <article class="feature-item">
+        <p><strong>Community restaurant ratings.</strong> Rate restaurants based on your allergy experience and read what other allergy families share. The more families join, the safer everyone eats.</p>
+      </article>
+
+      <article class="feature-item">
+        <p><strong>Emergency mode, one tap.</strong> Bold display of the user's name, severe allergens, and epinephrine device. "Read Aloud to Staff" for instant communication. One-tap to call 911 and directions to the nearest ER.</p>
+      </article>
+
+      <article class="feature-item">
+        <p><strong>Epinephrine device expiry tracker.</strong> Automatic reminders at 60, 30, and 7 days for EpiPen, EpiPen Jr, Auvi-Q, Symjepi, Adrenaclick, and Neffy. Never let a life-saving device expire.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- 5. PRICING -->
+<section class="section" style="background: var(--white);" aria-labelledby="pricing-heading">
+  <div class="section-inner section-inner--wide">
+    <p class="section-label">Pricing</p>
+    <h2 class="section-title" id="pricing-heading">Built for every family</h2>
+    <div class="pricing-row">
+
+      <div class="pricing-card">
+        <p class="pricing-tier">Free</p>
+        <p class="pricing-price">$0<span style="font-size:18px;font-weight:500;letter-spacing:0;">/mo</span></p>
+        <p class="pricing-price-sub">No credit card required</p>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>10 scans per month</li>
+          <li>One family profile</li>
+          <li>English allergy card</li>
+          <li>Epinephrine device tracker</li>
+          <li>Emergency mode</li>
+        </ul>
+      </div>
+
+      <div class="pricing-card pricing-card--premium">
+        <span class="best-value-pill">Best value</span>
+        <p class="pricing-tier">Premium</p>
+        <p class="pricing-price">$9.99<span style="font-size:18px;font-weight:500;letter-spacing:0;">/mo</span></p>
+        <p class="pricing-price-sub">or $79.99/year &nbsp;·&nbsp; Cancel any time</p>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Unlimited scans</li>
+          <li>Up to 6 family profiles</li>
+          <li>Allergy cards in 12 languages</li>
+          <li>Priority AI analysis</li>
+          <li>Multi-profile management</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 6. CTA -->
+<section class="cta" aria-label="Download">
+  <div class="cta-bg" aria-hidden="true"></div>
+  <div class="cta-inner">
+    <h2 class="cta-title">Eat with confidence.<br>Starting at your next meal.</h2>
+    <div class="store-row">
+      <!-- App Store and Play Store badges to be added after store approval -->
+    </div>
+  </div>
+</section>
+
+<!-- 7. FOOTER -->
 <footer>
   <div class="footer-logo">AllergyGuard<span>AI</span></div>
-  <div class="footer-company">A product of Vanquish Inc. &nbsp;·&nbsp; Rosedale, Maryland</div>
+  <div class="footer-company">Made with care by Vanquish Inc. &nbsp;·&nbsp; Rosedale, Maryland</div>
   <div class="footer-links">
-    <a href="terms.html">Terms of Service</a>
     <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
     <a href="support.html">Support</a>
-    <a href="mailto:support@allergyguardai.app">support@allergyguardai.app</a>
   </div>
   <div class="footer-copy">&copy; 2026 Vanquish Inc. All rights reserved.</div>
 </footer>
-
-<script type="module">
-  import { initializeApp }                            from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
-  import { getFirestore, doc, setDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
-
-  const firebaseConfig = {
-    apiKey:            'FIREBASE_API_KEY',
-    authDomain:        'FIREBASE_AUTH_DOMAIN',
-    projectId:         'FIREBASE_PROJECT_ID',
-    storageBucket:     'FIREBASE_STORAGE_BUCKET',
-    messagingSenderId: 'FIREBASE_MESSAGING_SENDER_ID',
-    appId:             'FIREBASE_APP_ID',
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db  = getFirestore(app);
-
-  window.handleNotify = async function () {
-    const emailInput = document.getElementById('email-input');
-    const btn        = document.querySelector('.notify-btn');
-    const errorEl    = document.getElementById('notify-error');
-    const email      = emailInput.value.trim();
-
-    if (!email || !email.includes('@')) {
-      emailInput.focus();
-      return;
-    }
-
-    btn.disabled    = true;
-    btn.textContent = 'Saving…';
-    errorEl.style.display = 'none';
-
-    try {
-      await setDoc(doc(db, 'waitlist_signups', email.toLowerCase()), {
-        email:     email.toLowerCase(),
-        createdAt: serverTimestamp(),
-        source:    'allergyguardai.app',
-      });
-      document.querySelector('.notify-form').style.display = 'none';
-      document.getElementById('notify-success').style.display = 'block';
-    } catch (err) {
-      console.error('[handleNotify] Firestore write failed:', err);
-      btn.disabled    = false;
-      btn.textContent = 'Notify Me';
-      errorEl.style.display = 'block';
-    }
-  };
-</script>
 
 </body>
 </html>
