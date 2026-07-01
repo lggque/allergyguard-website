@@ -13,6 +13,13 @@
   <meta property="og:description" content="AllergyGuardAI scans menus and food labels for allergens — instantly, accurately, and for every member of your family.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://allergyguardai.app">
+  <meta property="og:image" content="https://allergyguardai.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AllergyGuardAI — Eat with Confidence">
+  <meta name="twitter:description" content="AllergyGuardAI scans menus and food labels for allergens — instantly, accurately, and for every member of your family.">
+  <meta name="twitter:image" content="https://allergyguardai.app/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -63,8 +70,8 @@
     .section-inner--narrow { max-width: 680px; }
     .section-inner--wide   { max-width: 920px; }
     .section-label {
-      font-size: 12px; font-weight: 600; color: var(--blue);
-      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;
+      font-size: 13px; font-weight: 700; color: var(--navy);
+      text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px;
     }
     .section-title {
       font-size: clamp(24px, 4vw, 34px);
@@ -160,7 +167,7 @@
       padding: 80px 24px;
       text-align: center;
     }
-    .mission .section-label { color: rgba(93,143,184,0.75); margin-bottom: 14px; }
+    .mission .section-label { color: #fff; margin-bottom: 14px; }
     .mission .section-title {
       color: white;
       font-size: clamp(20px, 3.5vw, 28px);
@@ -295,6 +302,38 @@
       .pricing-row { grid-template-columns: 1fr; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "AllergyGuardAI",
+    "operatingSystem": "iOS, Android",
+    "applicationCategory": "HealthApplication",
+    "url": "https://allergyguardai.app",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Vanquish Inc"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Premium",
+        "price": "9.99",
+        "priceCurrency": "USD"
+      }
+    ],
+    "downloadUrl": [
+      "https://apps.apple.com/us/app/allergyguardai/id6770702010",
+      "https://play.google.com/store/apps/details?id=com.allergyguard.app"
+    ]
+  }
+  </script>
 </head>
 <body>
 
