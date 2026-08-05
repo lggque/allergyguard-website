@@ -140,6 +140,93 @@
       display: block;
     }
 
+    /* ── Video ───────────────────────────────────────────── */
+    .video-wrap {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      margin: 16px auto 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: var(--navy);
+    }
+    .video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+    .video-facade {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: none;
+      cursor: pointer;
+    }
+    .video-facade img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .video-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: grid;
+      place-items: center;
+      width: 72px;
+      height: 72px;
+      padding-left: 4px;
+      border-radius: 50%;
+      background: rgba(1, 22, 27, 0.66);
+      border: 2px solid rgba(255, 255, 255, 0.92);
+      color: #fff;
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+    .video-facade:hover .video-play,
+    .video-facade:focus-visible .video-play {
+      transform: translate(-50%, -50%) scale(1.06);
+      background: var(--blue);
+    }
+    .video-facade:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 3px;
+    }
+    .video-wrap--portrait {
+      max-width: 340px;
+      aspect-ratio: 9 / 16;
+    }
+    .video-alt {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 15px;
+      color: var(--text2);
+    }
+    .video-link {
+      padding: 0;
+      border: 0;
+      background: none;
+      font: inherit;
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+    .video-link:hover { color: var(--text); }
+    .video-tour-label { margin-top: 56px; }
+    @media (prefers-reduced-motion: reduce) {
+      .video-play { transition: none; }
+      .video-facade:hover .video-play { transform: translate(-50%, -50%); }
+    }
+
     /* ── Founder Story ───────────────────────────────────── */
     .founder-card {
       background: var(--white);
@@ -334,6 +421,32 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "How to Scan a Menu for Food Allergens in Under a Minute",
+      "description": "Photograph a restaurant menu and get a dish-by-dish read on what is safe, what needs caution, and what contains your allergens, plus a script for what to ask your server.",
+      "thumbnailUrl": ["https://i.ytimg.com/vi/TYMBWGWaXnU/maxresdefault.jpg"],
+      "uploadDate": "2026-08-05",
+      "duration": "PT1M",
+      "embedUrl": "https://www.youtube.com/embed/TYMBWGWaXnU",
+      "publisher": { "@type": "Organization", "name": "Vanquish Inc" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "Scan Any Restaurant Menu for Food Allergens - Full App Walkthrough",
+      "description": "A complete tour of AllergyGuardAI: the AI menu scanner, barcode scanning of packaged food, family allergy profiles, allergy cards in twelve languages, emergency mode, and epinephrine expiration reminders.",
+      "thumbnailUrl": ["https://i.ytimg.com/vi/EIZDouk4EOk/maxresdefault.jpg"],
+      "uploadDate": "2026-08-05",
+      "duration": "PT7M",
+      "embedUrl": "https://www.youtube.com/embed/EIZDouk4EOk",
+      "publisher": { "@type": "Organization", "name": "Vanquish Inc" }
+    }
+  ]
+  </script>
 </head>
 <body>
 
@@ -462,6 +575,38 @@
   <div class="section-inner section-inner--narrow">
     <p class="section-label">How it works</p>
     <h2 class="section-title" id="demo-heading">See it in action</h2>
+
+    <!-- Video: nothing loads from YouTube until someone presses play.
+         The 1-minute clip is a vertical Short, so the frame starts in
+         portrait and switches to 16:9 for the full walkthrough. -->
+    <div class="video-wrap video-wrap--portrait" id="video-player">
+      <button
+        class="video-facade"
+        type="button"
+        data-video-id="TYMBWGWaXnU"
+        data-orientation="portrait"
+        aria-label="Play video: how to scan a menu for food allergens">
+        <img
+          src="https://i.ytimg.com/vi/TYMBWGWaXnU/maxresdefault.jpg"
+          onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/TYMBWGWaXnU/hqdefault.jpg';"
+          alt=""
+          loading="lazy" decoding="async">
+        <span class="video-play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true">
+            <path d="M8 5.5v13l11-6.5z"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+
+    <p class="video-alt">
+      One minute, start to finish.
+      <button class="video-link" type="button" data-video-id="EIZDouk4EOk" data-orientation="landscape">
+        Watch the full walkthrough (7 min)
+      </button>
+    </p>
+
+    <p class="section-label video-tour-label">Take the tour</p>
     <div class="demo-wrap">
       <iframe
         src="demo.html"
@@ -657,5 +802,40 @@
   <div class="footer-copy">&copy; 2026 Vanquish Inc. All rights reserved.</div>
 </footer>
 
+
+<script>
+  (function () {
+    var player = document.getElementById('video-player');
+    if (!player) return;
+
+    function load(id, orientation) {
+      player.classList.toggle('video-wrap--portrait', orientation === 'portrait');
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id +
+                   '?autoplay=1&rel=0&playsinline=1';
+      iframe.title = 'AllergyGuardAI demo';
+      iframe.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.setAttribute('allowfullscreen', '');
+      player.innerHTML = '';
+      player.appendChild(iframe);
+    }
+
+    var facade = player.querySelector('.video-facade');
+    if (facade) {
+      facade.addEventListener('click', function () {
+        load(facade.dataset.videoId, facade.dataset.orientation);
+      });
+    }
+
+    var full = document.querySelector('.video-link');
+    if (full) {
+      full.addEventListener('click', function () {
+        load(full.dataset.videoId, full.dataset.orientation);
+        player.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      });
+    }
+  })();
+</script>
 </body>
 </html>
